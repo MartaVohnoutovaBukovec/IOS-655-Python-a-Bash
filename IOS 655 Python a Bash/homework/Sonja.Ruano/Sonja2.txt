@@ -1,0 +1,5 @@
+﻿string bits
+- <=   .... because last letter is not there
+see simplier solution
+too many while try also e.g.for
+

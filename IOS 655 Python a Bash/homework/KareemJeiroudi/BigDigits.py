@@ -1,0 +1,51 @@
+Zero = ["  ***  ", " *   * ", "*     *", "*     *", "*     *", " *   * ", "  ***  "]
+One = [" * ", "** ", " * ", " * ", " * ", " * ", "***"]
+Two = [" *** ", "*   *", "*  * ", "  *  ", " *   ", "*    ", "*****"]
+Three = [" *** ", "*   *", "    *", "  ** ", "    *", "*   *", " *** "]
+Four = ["   *  ", "  **  ", " * *  ", "*  *  ", "******", "   *  ", "   *  "]
+Five = ["*****", "*    ", "*    ", " *** ", "    *", "*   *", " *** "]
+Six = [" *** ", "*    ", "*    ", "**** ", "*   *", "*   *", " *** "]
+Seven = ["*****", "    *", "   * ", "  *  ", " *   ", "*    ", "*    "]
+Eight = [" *** ", "*   *", "*   *", " *** ", "*   *", "*   *", " *** "]
+Nine = [" ****", "*   *", "*   *", " ****", "    *", "    *", "    *"]
+Digits = [Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine] #this line I didn't use.
+
+def printBigDigit(para_int):	#I didn't know how to pass list as a parameter
+	local_List = []			#so I used a local variable
+	# it might not be a professional way to form the condition this way, but I don't know the switch loop in Python
+	if (para_int == 0):
+		local_List = Zero
+	elif(para_int == 1):
+		local_List = One
+	elif(para_int == 2):
+		local_List = Two
+	elif(para_int == 3):
+		local_List = Three
+	elif(para_int == 4):
+		local_List = Four
+	elif(para_int == 5):
+		local_List = Five
+	elif(para_int == 6):
+		local_List = Six
+	elif(para_int == 7):
+		local_List = Seven
+	elif(para_int == 8):
+		local_List = Eight
+	elif(para_int == 9):
+		local_List = Nine
+	else:
+		print("The number you entered is not valid!\n")
+	for i in range(len(local_List)):
+		print(local_List[i] + "\n")
+
+# Main Program
+def main():
+	while True:
+		userChoice = input("Please type any single digit from 0 to 9, and you'll get a big digit printed for you.\nOr type (Exit) to close the program.\n")
+		if (userChoice == "Exit" or userChoice == "exit"):
+			print("Exiting the program...")
+			break
+		else:
+			printBigDigit(int(userChoice))
+
+main()

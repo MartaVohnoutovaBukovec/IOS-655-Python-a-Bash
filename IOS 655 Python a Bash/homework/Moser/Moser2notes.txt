@@ -1,0 +1,28 @@
+- generate grig
+if you added lines and columns boundaries, if the number of digits is different - the table is not good
+Press enter for the next Grid...
+Rowcount: 9 Colcount: 3
+
++-+-+-+
+|-7615|2002|-776|
++-+-+-+
+|4835|7430|4768|
++-+-+-+
+|-745|6537|-4952|
++-+-+-+
+|8739|-5525|-6109|
++-+-+-+
+|656|8297|1193|
++-+-+-+
+|-6635|-9831|6817|
++-+-+-+
+|2195|1156|6617|
++-+-+-+
+|6106|-9990|-9359|
++-+-+-+
+|4273|5369|2196|
++-+-+-+
+
+- bigdigits - convert from str to int from int to str.... and expected numbers instead of stars
+
+- bits and bytes oki

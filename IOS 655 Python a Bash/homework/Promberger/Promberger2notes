@@ -1,0 +1,15 @@
+- bigdigits2
+if int(num)== 0:
+        for i in range(0,7):
+            addStr=zero[i]+"  "
+            wholeNumber[i]+=addStr
+    if int(num)== 1:
+        for i in range(0,7):
+            addStr=one[i]+"  "
+            wholeNumber[i]+=addStr
+    if int(num)== 2:
+    
+    you repeat the same more times - try to make it more simple
+    
+-bitconverter - ok
+if you create grid - must fit to any numbers
