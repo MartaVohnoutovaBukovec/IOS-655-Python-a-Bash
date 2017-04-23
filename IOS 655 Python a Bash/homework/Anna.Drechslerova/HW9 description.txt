@@ -1,0 +1,84 @@
+Description of given code - HW9
+1)
+def reduce_opacity(im, opacity):				
+    """Returns an image with reduced opacity."""   
+    assert opacity >= 0 and opacity <= 1
+    if im.mode != 'RGBA':
+        im = im.convert('RGBA')
+    else:
+        im = im.copy()
+    alpha = im.split()[3]
+    alpha = ImageEnhance.Brightness(alpha).enhance(opacity)
+    im.putalpha(alpha)
+    return im
+
+=> function asks for two parameters - im (image) and opacity
+=> the im.mode has to be converted to RGBA format(used for colours in PIL)- unless it already is in this format 
+=> alpha - splits im. and uses build-in functions of PIL to change the brightness and enghance opacity  
+=> putalha() copies the given band to the alpha layer of the current image.(http://effbot.org/imagingbook/image.htm) 
+=> the functions result is image with reduced opacity
+
+2)
+def watermark(im, mark, position, opacity=1):
+    """Adds a watermark to an image."""
+    if opacity < 1:
+        mark = reduce_opacity(mark, opacity)
+    if im.mode != 'RGBA':
+        im = im.convert('RGBA')
+    # create a transparent layer the size of the image and draw the
+    # watermark in that layer.
+    layer = Image.new('RGBA', im.size, (0,0,0,0))
+    if position == 'tile':
+        for y in range(0, im.size[1], mark.size[1]):
+            for x in range(0, im.size[0], mark.size[0]):
+                layer.paste(mark, (x, y))
+    elif position == 'scale':
+        # scale, but preserve the aspect ratio
+        ratio = min(
+            float(im.size[0]) / mark.size[0], float(im.size[1]) / mark.size[1])
+        w = int(mark.size[0] * ratio)
+        h = int(mark.size[1] * ratio)
+        mark = mark.resize((w, h))
+        layer.paste(mark, (im.size[0] - w, im.size[1] - h))
+    else:
+        layer.paste(mark, position)
+    # composite the watermark with the layer    
+    return Image.composite(layer, im, layer)
+
+=> function has 4 parameters(im,mark,position,opacity=1)
+=> if opacity is less than 1 the program calls the "reduce_opacity" function
+=> it also converts the image to RGBA format(as in the previous function)
+=> creates a layer of the same size as the image, in RGBA format
+=> if the position is "tile" -  the program will execute 2 loops (with x,y) in which there is assigned mark to layer (according to x,y)
+=> if the position is "scale" - there is new variable - ratio - which deals with minimal (x,y) of type float that contains size of image and mark
+ => the mark consists of two parts -w,h- and those are variables of type integer that multiply mark size (0 and 1) with ratio
+ => the mark variable is resized depending on values of w,h
+ => than the layer  is pased using mark,image size - w and image size -h
+=> f the position is not "tile" nor "scale" the program goes straight to pasting the layer using mark and given position
+=> the program than returns the whole composed image (image with a watermark)  
+
+
+3) 
+
+if __name__ == '__main__':
+    kam="/home/marta/photostruk/klara"
+    vodoznak = "/home/marta/photostruk/logo/logo_ju.jpeg"
+    position = "tile"
+    for root, dirs, files in os.walk(kam):
+        for file in os.listdir(root):
+            if file.endswith(".jpg"):
+                im = Image.open(os.path.join(root, file))
+                mark = Image.open(vodoznak)
+                
+                im_watermarked = watermark(im, mark,position, 0.15)                
+                im_watermarked.save(kam+"/" + file + "_watermarked_" + position + ".jpeg")
+                
+
+=> in case that "name" is == to "main"
+=> variable "kam" stores the path to given folder
+=> variable "vodoznak"stores the path to image that we want to use as watermark
+=> it is followed by the position "tile" and two loops
+=> after that goes through condition in which it makes sure that the file is image (.jpg)
+=> than it opens the image and the image for the watermark from ("vodoznak")
+=> finally it creates the watermarked image and saves it to folder given in "kam", file, the position .. and adds the .jpg to the end (so it would be an image)
+ 
