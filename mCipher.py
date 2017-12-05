@@ -140,52 +140,7 @@ def makeVernamCypher( text, key ):
     return answer
 
                       
-MY_KEY = "3141592653589793115997963468544185161590576171875"
-while True:
-    print("\n\n---Vernam Cypher---")
-    PlainText = input("Enter text to encrypt: ")
-    # Encrypt
-    Cypher = makeVernamCypher(PlainText, MY_KEY)
-    print("Cypher text: "+Cypher)
-    # Decrypt
-    decrypt = makeVernamCypher(Cypher, MY_KEY)
-    print("Decrypt: "+decrypt)
-'''
-def csv2html(file,delimiter):
 
-    import csv
-
-    try:
-        f = open(file)
-        f_out = open("martahtml.html","w")
-        f_out.write('<table border="1" style="table-layout: fixed">\n')
-        f_out.write("<tr bgcolor=\"#00FF00\"> <th width=\"15%\">Name</th><th width=\"15%\">Occupation</th><th width=\"15%\">Phone</th><th width=\"15%\">Opinion</th></tr>")
-    except (IOError, ValueError):
-        print("An I/O error or a ValueError occurred")
-    except:
-        print("An unexpected error occurred")
-        raise
-
-    try:
-        for line in f:
-            f_out.write('<tr>')
-            i = list(line.split(delimiter))
-            for j in i:
-                f_out.write('<td>' +j+ "</td>" )
-            f_out.write('</tr>\n')
-            
-    except EOFError:
-        print("An unexpected error occurred")
-        pass
-
-    f_out.write('</table>')
-    if not f.closed:
-        f.close()
-    if not f_out.closed:
-        f_out.close()
-
-csv2html("martacsv.csv",",")
-'''
 
 # mCipher.trans_cipher("I have a cat her name is Tit and on the mat she loves to sit","Python",1)
 # mCipher.vigenere("I have a cat her name is Tit and on the mat she loves to sit","python",1)
