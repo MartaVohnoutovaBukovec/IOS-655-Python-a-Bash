@@ -1,0 +1,6 @@
+text_to_encrypt = (
+    "Once upon a midnight dreary, while I pondered, weak and weary,"
+    "Over many a quaint and curious volume of forgotten lore, While I nodded, nearly napping, "
+    "suddenly there came a tapping, as of some one gently rapping, rapping at my chamber door. "
+    "'This some visiter,' I muttered, 'tapping at my chamber door — Only this, and nothing more."
+)
